@@ -4,7 +4,7 @@
 
 ### More information on how to use QuagmiR
 
-# [How to use QuagmiR on your own computer](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/How-to-use-QuagmiR-on-your-own-computer)
-# [Manual](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/Manual)
-# [QuagmiR on the Cancer Genomics Cloud](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-the-Cancer-Genomics-Cloud)
-# [QuagmiR on Biowulf](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-Biowulf)
+#### [How to use QuagmiR on your own computer](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/How-to-use-QuagmiR-on-your-own-computer)
+#### [Manual](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/Manual)
+#### [QuagmiR on the Cancer Genomics Cloud](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-the-Cancer-Genomics-Cloud)
+#### [QuagmiR on Biowulf](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-Biowulf)
