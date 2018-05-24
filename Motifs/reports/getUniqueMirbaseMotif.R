@@ -8,8 +8,8 @@ setwd(base_path)
 miRBase_file <- 'miRNA.xls' #file from miRBase v.22
 miRBase_data <- read.xls(miRBase_file, sheet = 1, header = TRUE)
 
-motif_len <- 13
-include_pos <- F
+motif_len <- 13 #length of motif
+include_pos <- F #include motif position in fasta file?
 
 #formats file from miRBase
 getMirnaData <- function(miRBase_file){
