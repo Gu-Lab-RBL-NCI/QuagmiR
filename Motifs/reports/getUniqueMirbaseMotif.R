@@ -1,19 +1,27 @@
 
+## PURPOSE: generate unique motifs from miRBase data
+## INPUT: miRBase data  miRNA.xls
+## OUTPUT: fasta file motif_list_species_mirbase_22.fa
+##         table containing motifs  species-miRBase22.tsv
+
 require(gdata)
 require(plyr)
+require(data.table)
 
 
-base_path<-'/Users/chens22/Documents/miRBase/miRBase22/'
+base_path<-'C:/Users/Susanna/Documents/NCI/miRBase/'
 setwd(base_path)
 miRBase_file <- 'miRNA.xls' #file from miRBase v.22
-miRBase_data <- read.xls(miRBase_file, sheet = 1, header = TRUE)
+perl <- 'C:/Strawberry/perl/bin/perl5.26.2.exe'
+miRBase_data <- read.xls(miRBase_file, sheet = 1, header = TRUE, perl=perl)
 
 motif_len <- 13 #length of motif
 include_pos <- F #include motif position in fasta file?
+motif_start <- 1 #set start position of motif
 
 #formats file from miRBase
 getMirnaData <- function(miRBase_file){
-  miRBase_data <- read.xls(miRBase_file, sheet = 1, header = TRUE)
+  miRBase_data <- read.xls(miRBase_file, sheet = 1, header = TRUE, perl=perl)
   miRBase_data <- miRBase_data[, -grep("X", colnames(miRBase_data), fixed=T)]
   write.table(miRBase_data, 'miRNA.tsv', sep='\t', row.names=F)
   miRBase_data <- read.table('miRNA.tsv', sep='\t', header=T, stringsAsFactors=F)
@@ -62,11 +70,11 @@ getDupliMirna<-function(mirna, mirna_data){
 }
 
 #generate motif at center of sequence
-getUniqueMotif<-function(length, seq, primary_sequences){
-  mid<-trunc(nchar(seq)/2)
-  start<-mid-(trunc(length/2))
-  end<-mid+(trunc(length/2))
-  motif<-substr(seq, start, end)
+getUniqueMotif<-function(length, seq, primary_sequences, start){
+  #mid<-trunc(nchar(seq)/2)
+  #start<-mid-(trunc(length/2))
+  #end<-mid+(trunc(length/2))
+  motif<-substr(seq, start, start + length - 1)
   if(!inPriSeq(motif, primary_sequences)){
     return(motif)
   }else{
@@ -123,7 +131,7 @@ species_list <- unique(sapply(strsplit(as.character(miRBase_data$PRIMIRNA), "-",
 new_species_list <- species_list
 
 #generate motifs
-for(species in species_list){
+for(species in species_list[1:2]){
   
   if(file.exists(paste0(species, '-miRBase22.tsv'))){ next }
   
@@ -133,7 +141,7 @@ for(species in species_list){
     new_species_list <- new_species_list[new_species_list!=species]
     next 
   }
-
+  
   
   #rename miRNA which have paralogs
   for(a in unique(mirna_data$ACCESSION)){
@@ -164,7 +172,7 @@ for(species in species_list){
     pri_seq<-getPrimarySequences(m)
     
     #get unique motif for miRNA and generate id containing motif positions
-    unique_motif<-getUniqueMotif(motif_len, curr_seq, pri_seq)
+    unique_motif<-getUniqueMotif(motif_len, curr_seq, pri_seq, motif_start)
     mirna_data[which(mirna_data$MIRNA==m), paste0('MOTIF.', motif_len)]<-unique_motif
     if(!is.na(unique_motif)){
       motif_position<-getMotifPosition(unique_motif, curr_seq)
@@ -263,14 +271,14 @@ for(species in species_list){
 #calculate motif coverage
 motif_coverage <- data.frame(SPECIES=as.character(species_list), COVERAGE=NA, stringsAsFactors = F)
 for(species in species_list){
-
+  
   mirna_file <- paste0(species, '-miRBase22.tsv')
   if(!file.exists(mirna_file)){ next }
   mirna_data <- read.table(mirna_file, sep='\t', header=T, stringsAsFactors = F)
   
   num_seq <- nrow(mirna_data)
   covered <- nrow(mirna_data[which(!is.na(as.vector(mirna_data$POS.MIRNA))),])
-
+  
   motif_coverage[which(motif_coverage$SPECIES==species), 'COVERAGE'] <- as.numeric(covered/num_seq)
 }
 write.table(motif_coverage, 'motif_coverage.tsv', sep='\t', row.names=F)
