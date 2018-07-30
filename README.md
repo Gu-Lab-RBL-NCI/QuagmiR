@@ -12,5 +12,5 @@ QuagmiR is written in Python and can be obtained freely from Github (https://git
 
 #### [How to use QuagmiR on your own computer](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/How-to-use-QuagmiR-on-your-own-computer)
 #### [Manual](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/Manual)
-#### [QuagmiR on the Cancer Genomics Cloud](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-the-Cancer-Genomics-Cloud)
+#### [QuagmiR on the Seven Bridges Cancer Genomics Cloud](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-the-Seven-Bridges-Cancer-Genomics-Cloud-%28CGC%29)
 #### [QuagmiR on Biowulf](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-Biowulf)
