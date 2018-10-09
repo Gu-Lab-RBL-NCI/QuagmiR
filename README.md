@@ -14,3 +14,10 @@ QuagmiR is written in Python and can be obtained freely from Github (https://git
 #### [Manual](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/Manual)
 #### [QuagmiR on the Seven Bridges Cancer Genomics Cloud](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-the-Seven-Bridges-Cancer-Genomics-Cloud-%28CGC%29)
 #### [QuagmiR on Biowulf](https://github.com/Gu-Lab-RBL-NCI/QuagmiR/wiki/QuagmiR-on-Biowulf)
+
+
+### References
+[Pubmed link](https://www.ncbi.nlm.nih.gov/pubmed/30295744)
+
+[QuagmiR: A Cloud-based Application for IsomiR Big Data Analytics.](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/bty843/5123434)
+Bofill-De Ros X, Chen K, Chen S, Tesic N, Randjelovic D, Skundric N, Nesic S, Varjacic V, Williams EH, Malhotra R, Jiang M, Gu S. Bioinformatics. 2018 Oct 8. doi: 10.1093/bioinformatics/bty843.
